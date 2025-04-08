@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Motivation Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #paragraph {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+    }
+    #inputArea {
+      width: 90%;
+      max-width: 800px;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Typing Motivation Game</h1>
+  <div id="paragraph"></div>
+  <textarea id="inputArea" rows="5" placeholder="Start typing here..."></textarea>
+  <div id="result"></div>  <script>
+    const paragraphs = [
+      "Believe in yourself and all that you are.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Success is what happens after you have survived all your mistakes.",
+      "Stay positive, work hard, make it happen.",
+      "The only limit to our realization of tomorrow is our doubts of today.",
+      "You are stronger than you think.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "The future depends on what you do today.",
+      "Great things never come from comfort zones.",
+      "The harder you work for something, the greater you’ll feel when you achieve it.",
+      "Don’t stop until you’re proud.",
+      "Difficult roads often lead to beautiful destinations.",
+      "Be so good they can’t ignore you.",
+      "Dream it. Wish it. Do it.",
+      "Success doesn’t just find you. You have to go out and get it.",
+      "It always seems impossible until it’s done.",
+      "Little things make big days.",
+      "Don’t wait for opportunity. Create it.",
+      "Sometimes later becomes never. Do it now.",
+      "Wake up with determination. Go to bed with satisfaction.",
+      "Hard work beats talent when talent doesn’t work hard.",
+      "Don’t limit your challenges. Challenge your limits.",
+      "Start where you are. Use what you have. Do what you can.",
+      "If you can dream it, you can do it.",
+      "Work in silence. Let your success be your noise.",
+      "Push harder than yesterday if you want a different tomorrow.",
+      "Discipline is the bridge between goals and accomplishment.",
+      "Do something today that your future self will thank you for.",
+      "Success is not for the lazy.",
+      "Every day is a chance to get better."
+    ];
+
+    let currentIndex = 0;
+    const paragraphEl = document.getElementById("paragraph");
+    const inputArea = document.getElementById("inputArea");
+    const result = document.getElementById("result");
+
+    function loadParagraph() {
+      paragraphEl.textContent = paragraphs[currentIndex];
+      inputArea.value = "";
+      result.textContent = "";
+    }
+
+    inputArea.addEventListener("input", () => {
+      const typedText = inputArea.value;
+      const originalText = paragraphs[currentIndex];
+
+      if (typedText === originalText) {
+        result.textContent = "Great job! Moving to next paragraph...";
+        currentIndex = (currentIndex + 1) % paragraphs.length;
+        setTimeout(loadParagraph, 1500);
+      }
+    });
+
+    loadParagraph();
+  </script></body>
+</html>
